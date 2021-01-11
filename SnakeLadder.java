@@ -4,7 +4,8 @@ public class SnakeLadder {
     public static void main(String[] args) {
         int strtpos=0;
         int curpos=0;
-int prev=0;
+		int prev=0;
+		int count=0;
 
         while(curpos!=100) {
 
@@ -17,14 +18,17 @@ int prev=0;
                 case IS_LADDER:
 					prev=curpos;
                     curpos += dicenum;
+					count++;
                     break;
                 case IS_SNAKE:
 					prev=curpos;
                     curpos -= dicenum;
+					count++;
 					break;
                 default:
 					prev=curpos;
                     curpos = curpos;
+					count++;
 					break;
             }
             System.out.println("new position = "+curpos);
@@ -41,6 +45,7 @@ int prev=0;
 			}
         }
         System.out.println("...Won---Game!...congratulations");
+		System.out.println("Total number of times dice was rolled to win the game = "+count);
     }
 
 }
