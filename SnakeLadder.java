@@ -4,24 +4,34 @@ public class SnakeLadder {
     public static void main(String[] args) {
         int strtpos=0;
         int curpos=0;
+		int c=0;
 
-        int dicenum = (int) ((Math.floor(Math.random() * 10 % 6)) + 1);
-        System.out.println("Current face of die is : " + dicenum);
+        while(curpos!=100) {
 
-        int play = (int) (Math.floor(Math.random() * 10) % 3);
-        System.out.println("option : " +play);
-        switch(play) {
-            case IS_LADDER:
-                curpos += dicenum;
-                break;
-            case IS_SNAKE:
-                curpos -= dicenum;
-                break;
-            default:
-                curpos = curpos;
-                break;
+            int dicenum = (int) ((Math.floor(Math.random() * 10 % 6)) + 1);
+            System.out.println("Current face of die is : " + dicenum);
+
+            int play = (int) (Math.floor(Math.random() * 10) % 3);
+            System.out.println("option : " +play);
+            switch(play) {
+                case IS_LADDER:
+                    curpos += dicenum;
+					c++;
+                    break;
+                case IS_SNAKE:
+                    curpos -= dicenum;
+                    c++;
+					break;
+                default:
+                    curpos = curpos;
+                    c++;
+					break;
+            }
+            System.out.println("new position = "+curpos);
         }
-        System.out.println("new position = "+curpos);
+        System.out.println("reached winning position :" +curpos);
+		System.out.println("count = "+c);
     }
 
 }
+
