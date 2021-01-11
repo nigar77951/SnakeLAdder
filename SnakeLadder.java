@@ -4,7 +4,7 @@ public class SnakeLadder {
     public static void main(String[] args) {
         int strtpos=0;
         int curpos=0;
-		int c=0;
+int prev=0;
 
         while(curpos!=100) {
 
@@ -15,22 +15,32 @@ public class SnakeLadder {
             System.out.println("option : " +play);
             switch(play) {
                 case IS_LADDER:
+					prev=curpos;
                     curpos += dicenum;
-					c++;
                     break;
                 case IS_SNAKE:
+					prev=curpos;
                     curpos -= dicenum;
-                    c++;
 					break;
                 default:
+					prev=curpos;
                     curpos = curpos;
-                    c++;
 					break;
             }
             System.out.println("new position = "+curpos);
+			if(curpos>100) {
+				curpos=prev;
+				System.out.println("same old location "+curpos);
+			}
+			else if(curpos==100) {
+				System.out.println("Current position is "+curpos);
+			}
+			else if(curpos<0) {
+				curpos=strtpos;
+				System.out.println("You are at start position again "+curpos);
+			}
         }
-        System.out.println("reached winning position :" +curpos);
-		System.out.println("count = "+c);
+        System.out.println("...Won---Game!...congratulations");
     }
 
 }
